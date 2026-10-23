@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tahajjud</title>
+<meta name="description" content="Quran recitation from the Tahajjud nights of 1446, with ayah-by-ayah looping for memorization.">
+<meta name="theme-color" content="#0D1A21" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#EFF3EE" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tahajjud">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <button class="surah-btn" id="surahBtn" aria-label="Choose surah">
+      <span class="surah-ar" id="surahAr"></span>
+      <span class="surah-en" id="surahEn"></span>
+    </button>
+    <button class="night-chip" id="nightChip" aria-label="Choose recording"></button>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+    </button>
+  </header>
+
+  <main id="reader" class="reader" tabindex="-1">
+    <div id="page" class="page" dir="rtl" lang="ar"></div>
+  </main>
+
+  <button class="back-to-now" id="backToNow" hidden>Back to the current ayah</button>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <footer class="dock">
+    <div class="pick-banner" id="pickBanner" hidden></div>
+    <div class="loop-strip" id="loopStrip" hidden>
+      <button class="loop-label" id="loopLabel"></button>
+      <button class="icon-btn small" id="loopClear" aria-label="Clear the loop">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="progress" id="progress" hidden><div class="bar" id="progressBar"></div><span id="progressText"></span></div>
+    <div class="player">
+      <button class="icon-btn" id="loopBtn" aria-label="Set a loop">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/></svg>
+      </button>
+      <button class="icon-btn" id="prevBtn" aria-label="Previous ayah">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6l-8 6 8 6V6z"/><path d="M6 6v12"/></svg>
+      </button>
+      <button class="play-btn" id="playBtn" aria-label="Play">
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l12 7-12 7V5z"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+      <button class="icon-btn" id="nextBtn" aria-label="Next ayah">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l8 6-8 6V6z"/><path d="M18 6v12"/></svg>
+      </button>
+      <button class="speed-chip" id="speedBtn" aria-label="Playback speed">1×</button>
+    </div>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden>
+  <div class="sheet-grip" aria-hidden="true"></div>
+  <div class="sheet-body" id="sheetBody"></div>
+</section>
+
+<audio id="audio" preload="auto"></audio>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
